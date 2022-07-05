@@ -3,7 +3,6 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    'assets/scripts/vendor': "./src/assets/scripts/vendor.js",
     'assets/scripts/main': "./src/index.js",
   },
   module: {
@@ -11,6 +10,10 @@ module.exports = {
       {
         test: /\.html$/,
         use: ["html-loader"]
+      },
+      {
+        test: /\.pdf$/,
+        use: ["file-loader?minetype=application/pdf&name=static/[name].pdf"]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
