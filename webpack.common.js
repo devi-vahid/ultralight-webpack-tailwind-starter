@@ -1,19 +1,23 @@
-const path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    'assets/scripts/main': "./src/index.js",
+    'assets/scripts/main': './src/index.js',
   },
   module: {
     rules: [
       {
         test: /\.html$/,
-        use: ["html-loader"]
+        use: ['html-loader']
+      },
+      {
+        test: /\.mp4$/,
+        type: 'asset/resource',
       },
       {
         test: /\.pdf$/,
-        use: ["file-loader?minetype=application/pdf&name=static/[name].pdf"]
+        type: 'asset/resource',
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

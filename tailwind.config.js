@@ -1,9 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ['./src/**/*.{html,js}'],
   darkMode: 'media',
   theme: {
     extend: {},
     container: {
+      center: true,
       padding: {
         DEFAULT: '1rem',
         sm: '2rem',
@@ -11,8 +12,7 @@ module.exports = {
         xl: '5rem',
         '2xl': '6rem',
       },
-      center: true,
     },
   },
   plugins: [],
-}
+};

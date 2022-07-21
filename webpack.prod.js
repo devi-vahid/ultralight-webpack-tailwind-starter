@@ -1,17 +1,18 @@
-const path = require("path");
-const common = require("./webpack.common");
-const { merge } = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const common = require('./webpack.common');
+const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
-  mode: "production",
+  mode: 'production',
   output: {
-    filename: "[name].[contenthash].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    filename: '[name].[contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'static/[name].[contenthash][ext]',
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -22,7 +23,7 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        template: './src/index.html',
         inject: 'body',
         minify: {
           removeAttributeQuotes: true,
@@ -42,16 +43,9 @@ module.exports = merge(common, {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
+          'css-loader',
+          'postcss-loader',
         ],
-      },
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: "static/[name].[contenthash][ext]",
-        },
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
